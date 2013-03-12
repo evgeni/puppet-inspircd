@@ -1,0 +1,26 @@
+---
+servername: irc.example.com
+network: example.com
+description: example IRC network
+networkname: example
+adminname: root admin
+adminnick: root
+adminemail: root@example.com
+ips:
+  - 127.0.0.1
+ssl: gnutls
+cafile: /etc/inspircd/snakeca.crt
+certfile: /etc/inspircd/snakeoil.crt
+keyfile: /etc/inspircd/snakeoil.key
+opers:
+  root:
+    name: root
+    password: root
+    host: *@*
+    type: NetAdmin
+  admin:
+    name: admin
+    password: admin
+    host: *@*
+    type: NetAdmin
+
