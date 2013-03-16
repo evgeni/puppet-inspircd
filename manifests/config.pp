@@ -1,18 +1,35 @@
+# == Class: inspircd::config
+#
+# Create configuration files for InspIRCd, based on default settings
+# from inspircd::params and hiera.
+#
+# === Parameters
+#
+# None
+#
+# === Authors
+#
+# Evgeni Golov <evgeni@golov.de>
+#
+# === Copyright
+#
+# Copyright 2013 Evgeni Golov
+#
 class inspircd::config (
-  $ensure = hiera('ensure', $inspircd::params::ensure),
-  $servername = hiera('servername', $::fqdn),
-  $network = hiera('network', $servername),
+  $ensure      = hiera('ensure', $inspircd::params::ensure),
+  $servername  = hiera('servername', $::fqdn),
+  $network     = hiera('network', $servername),
   $description = hiera('description', $inspircd::params::description),
   $networkname = hiera('networkname', $inspircd::params::networkname),
-  $adminname = hiera('adminname', $inspircd::params::adminname),
-  $adminemail = hiera('adminemail', $inspircd::params::adminemail),
-  $adminnick = hiera('adminnick', $inspircd::params::adminnick),
-  $ips = hiera('ips', $inspircd::params::ips),
-  $opers = hiera('opers', []),
-  $ssl = hiera('ssl', undef),
-  $cafile = hiera('cafile', undef),
-  $certfile = hiera('certfile', undef),
-  $keyfile = hiera('keyfile', undef),
+  $adminname   = hiera('adminname', $inspircd::params::adminname),
+  $adminemail  = hiera('adminemail', $inspircd::params::adminemail),
+  $adminnick   = hiera('adminnick', $inspircd::params::adminnick),
+  $ips         = hiera('ips', $inspircd::params::ips),
+  $opers       = hiera('opers', []),
+  $ssl         = hiera('ssl', undef),
+  $cafile      = hiera('cafile', undef),
+  $certfile    = hiera('certfile', undef),
+  $keyfile     = hiera('keyfile', undef),
 ) inherits inspircd::params {
   file { '/etc/inspircd/inspircd.conf':
     ensure  => $ensure,
@@ -29,7 +46,7 @@ class inspircd::config (
     owner   => 'irc',
     group   => 'irc',
     mode    => '0400',
-    source  => "puppet:///modules/inspircd/default",
+    source  => 'puppet:///modules/inspircd/default',
     require => Package['inspircd'],
     notify  => Class['inspircd::service'],
   }
