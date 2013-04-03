@@ -23,13 +23,12 @@ class inspircd::package (
       ensure  => $ensure,
       content => template('inspircd/etc/apt/preferences.d/inspircd.pref.erb'),
     }
+    $require = File['/etc/apt/preferences.d/inspircd.pref']
+  } else {
+    $require = []
   }
   package { 'inspircd':
-    ensure => $ensure,
-    require => $use_backport ? {
-      true => File['/etc/apt/preferences.d/inspircd.pref'],
-      default => [],
-    }
+    ensure  => $ensure,
+    require => $require,
   }
 }
-
