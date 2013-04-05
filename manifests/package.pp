@@ -25,6 +25,9 @@ class inspircd::package (
     }
     $require = File['/etc/apt/preferences.d/inspircd.pref']
   } else {
+    file { '/etc/apt/preferences.d/inspircd.pref':
+      ensure  => absent,
+    }
     $require = []
   }
   package { 'inspircd':
