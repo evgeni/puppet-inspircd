@@ -27,6 +27,7 @@ class inspircd::config (
   $ips         = hiera('ips', $inspircd::params::ips),
   $opers       = hiera('opers', []),
   $ssl         = hiera('ssl', undef),
+  $sslonly     = hiera('sslonly', false),
   $cafile      = hiera('cafile', undef),
   $certfile    = hiera('certfile', undef),
   $keyfile     = hiera('keyfile', undef),
