@@ -91,6 +91,9 @@
 <% end -%>
           binddn="<%= ldapauth['binddn'] %>"
           bindauth="<%= ldapauth['bindauth'] %>"
+<% if ldapauth['useusername'] -%>
+          userfield="yes"
+<% end -%>
           verbose="yes">
 <% end -%>
 
