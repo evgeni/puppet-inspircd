@@ -30,6 +30,7 @@ class inspircd::config (
   $cafile      = hiera('cafile', undef),
   $certfile    = hiera('certfile', undef),
   $keyfile     = hiera('keyfile', undef),
+  $ldapauth    = hiera('ldapauth', undef),
 ) inherits inspircd::params {
   file { '/etc/inspircd/inspircd.conf':
     ensure  => $ensure,

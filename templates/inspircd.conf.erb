@@ -76,6 +76,23 @@
       type="<%= oper[1]['type'] %>">
 <% end -%>
 
+<% if ldapauth != "" -%>
+<module name="m_ldapauth.so">
+<ldapauth baserdn="<%= ldapauth['baserdn'] %>"
+<% if ldapauth['attribute'] -%>
+          attribute="<%= ldapauth['attribute'] %>"
+<% else -%>
+          attribute="uid"
+<% end -%>
+          server="<%= ldapauth['server'] %>"
+          killreason="Access denied"
+<% if ldapauth['searchscope'] -%>
+          searchscope="<%= ldapauth['searchscope'] %>"
+<% end -%>
+          binddn="<%= ldapauth['binddn'] %>"
+          bindauth="<%= ldapauth['bindauth'] %>"
+          verbose="yes">
+<% end -%>
 
 <files motd="/etc/inspircd/inspircd.motd"
        rules="/etc/inspircd/inspircd.rules">
