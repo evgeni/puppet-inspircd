@@ -61,9 +61,17 @@
       classes="HostCloak"
       host="helper.<%= scope.lookupvar('inspircd::config::network') %>">
 
+<module name="m_password_hash.so">
+<module name="m_md5.so">
+<module name="m_sha256.so">
+<module name="m_ripemd160.so">
+
 <% opers.each do |oper| -%>
 <oper name="<%= oper[0] %>"
       password="<%= oper[1]['password'] %>"
+<% if oper[1]['hash'] -%>
+      hash="<%= oper[1]['hash'] %>"
+<% end -%>
       host="<%= oper[1]['host'] %>"
       type="<%= oper[1]['type'] %>">
 <% end -%>
