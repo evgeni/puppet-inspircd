@@ -22,6 +22,7 @@ class inspircd::service (
     ensure     => $ensure_running,
     enable     => $ensure_enable,
     hasrestart => true,
+    restart    => '/etc/init.d/inspircd reload',
     hasstatus  => true,
     require    => Class['inspircd::config'],
   }
