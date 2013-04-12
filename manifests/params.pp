@@ -39,4 +39,5 @@ class inspircd::params {
   $certfile       = undef
   $keyfile        = undef
   $ldapauth       = undef
+  $use_backport   = false
 }

@@ -16,7 +16,7 @@
 #
 class inspircd::package (
   $ensure = hiera('ensure', $inspircd::params::ensure),
-  $use_backport = hiera('use_backport'),
+  $use_backport = hiera('use_backport', $inspircd::params::use_backport),
 ) inherits inspircd::params {
   if $use_backport {
     file { '/etc/apt/preferences.d/inspircd.pref':
