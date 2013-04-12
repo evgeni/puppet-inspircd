@@ -24,10 +24,19 @@ class inspircd::params {
   $ensure = present
   $ensure_enable = true
   $ensure_running = running
+  $servername  = $::fqdn
+  $network     = $servername
   $description = 'InspIRCd server'
   $networkname = 'localnet'
   $adminname = 'root rootsen'
   $adminnick = 'root'
-  $adminemail = 'root@example.com'
+  $adminemail = "root@${::domain}"
   $ips = ['127.0.0.1', $::ipaddress]
+  $opers       = []
+  $ssl         = undef
+  $sslonly     = false
+  $cafile      = undef
+  $certfile    = undef
+  $keyfile     = undef
+  $ldapauth    = undef
 }
