@@ -42,6 +42,8 @@
          localmax="3"
          globalmax="3">
 
+<module name="m_override.so">
+
 <class name="Shutdown"
        commands="DIE RESTART REHASH LOADMODULE UNLOADMODULE RELOAD">
 <class name="ServerLink"
@@ -55,6 +57,7 @@
 
 <type name="NetAdmin"
       classes="OperChat BanControl HostCloak Shutdown ServerLink"
+      override="INVITE KEY LIMIT BANWALK KICK MODEOP MODEDEOP MODEVOICE MODEDEVOICE MODEHALFOP MODEDEHALFOP OTHERMODE"
       host="netadmin.<%= scope.lookupvar('inspircd::config::network') %>">
 <type name="GlobalOp"
       classes="OperChat BanControl HostCloak ServerLink"
