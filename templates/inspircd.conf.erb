@@ -1,3 +1,9 @@
+#
+## THIS FILE IS MANAGED BY PUPPET
+## <%= file %>
+##
+#
+
 <server name="<%= scope.lookupvar('inspircd::config::servername') %>"
         description="<%= scope.lookupvar('inspircd::config::description') %>"
         network="<%= scope.lookupvar('inspircd::config::networkname') %>">
@@ -39,8 +45,8 @@
          pingfreq="120"
          sendq="262144"
          recvq="8192"
-         localmax="3"
-         globalmax="3">
+         localmax="50"
+         globalmax="50">
 
 <module name="m_override.so">
 
@@ -115,6 +121,7 @@
          qaprefixes="no"
          deprotectself="no"
          deprotectothers="no"
+         defaultmodes=""
          flatlinks="no"
          hideulines="no"
          syntaxhints="no"
